@@ -1,7 +1,5 @@
 @modified-icon-width: 8px;
 
-@tab-border: none;
-
 @tab-highlight-color: rgb(79,153,211);
 @tab-background: rgb(30,35,38);
 @tab-background-active: rgb(16,17,18);
@@ -9,15 +7,15 @@
 @tab-bar-background-color: rgb(38,43,48);
 
 @tab-height: 40px;
-@tab-top-padding: 0px;
-@tab-bottom-border-height: 0px;
+@tab-top-padding: 0;
+@tab-bottom-border-height: 4px;
 
 .tab-bar {
-  height: @tab-height + @tab-top-padding + @tab-bottom-border-height;
+  height: @tab-height + @tab-top-padding;
   background: @tab-bar-background-color;
   padding: 0 10px 0 10px;
   box-sizing: border-box;
-  border-bottom: solid 4px @tab-bar-bottom-border-color;
+  border-bottom: solid @tab-bottom-border-height @tab-bar-bottom-border-color;
 
   &:after {
     background: @tab-background-active;
@@ -28,37 +26,40 @@
     position: relative;
     top: @tab-top-padding;
     height: @tab-height;
-    line-height: @tab-height;
+
     color: @text-color;
-    padding-left: 0;
+    background: @tab-background;
+
+    line-height: @tab-height;
     margin-left: 15px;
-    border-radius: 0;
-    box-shadow: none;
+    padding-left: 0;
+
     -webkit-transform: none;
     transition: color .1s ease-in;
-    box-shadow: none;
+
     border-radius: 0;
     border: none;
-    border-bottom: solid 4px @tab-bar-bottom-border-color;
+    border-bottom: solid @tab-bottom-border-height @tab-bar-bottom-border-color;
 
-    &, &:before {
-      background: @tab-background;
-    }
+    box-shadow: none;
 
     &:before {
-      background: @tab-background;
-      content: '';
       position: absolute;
-      top: 0;
       left: -16px;
+      top: 0;
       height: @tab-height;
       width: 16px;
-      border-radius: 0;
-      border-top-right-radius: 0;
+
+      background: @tab-background;
+      content: '';
       -webkit-transform: none;
-      border: none;
-      border-bottom: solid 4px @tab-bar-bottom-border-color;
+
+      border-radius: 0;
+      border-top: none;
+      border-right: none;
+      border-bottom: solid @tab-bottom-border-height @tab-bar-bottom-border-color;
       border-left: solid 1px @tab-bar-bottom-border-color;
+
       box-shadow: none;
     }
 
@@ -101,7 +102,7 @@
     color: @text-color-highlight;
     box-shadow: none;
     border: none;
-    border-bottom: solid 4px @tab-highlight-color;
+    border-bottom: solid @tab-bottom-border-height @tab-highlight-color;
 
     .title{
       position: relative;
@@ -121,12 +122,11 @@
 
     &:before {
       border: none;
-      border-bottom: solid 4px @tab-highlight-color;
+      border-bottom: solid @tab-bottom-border-height @tab-highlight-color;
       box-shadow: none;
     }
 
   }
-
 
   .tab:hover {
     color: @text-color-highlight;
@@ -141,9 +141,9 @@
   }
 
   .placeholder {
-    height: @tab-height + @tab-top-padding + @tab-bottom-border-height;
+    height: @tab-height + @tab-top-padding;
     &:after {
-      top: @tab-height + @tab-top-padding + @tab-bottom-border-height;
+      top: @tab-height + @tab-top-padding;
     }
   }
 }
